@@ -81,3 +81,34 @@ Home 页必须回答：
 - 不允许直接写代码
 - 不允许擅自扩展页面细节
 - 不允许跨模块改动
+
+---
+
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+## Build for GitHub Pages
+
+本项目采用静态前端实现，并使用 URL hash 路由（`#/...`），可直接部署到 GitHub Pages。
+
+```bash
+npm run build
+```
+
+构建输出目录：
+
+- `dist/`
+
+路由示例：
+
+- `#/operations/home`
+- `#/workspace/home`
+
+
+## GitHub Pages path note
+
+To avoid blank pages under project subpaths (for example `https://<user>.github.io/<repo>/`), Vite is configured with a relative asset base in `vite.config.js` (`base: './'`).
