@@ -107,3 +107,8 @@ npm run build
 
 - `#/operations/home`
 - `#/workspace/home`
+
+
+## GitHub Pages path note
+
+To avoid blank pages under project subpaths (for example `https://<user>.github.io/<repo>/`), Vite is configured with a relative asset base in `vite.config.js` (`base: './'`).

@@ -14,6 +14,7 @@
 - Static frontend only
 - No backend runtime
 - Hash route pattern (`#/...`) to avoid server-side route handling
+- Relative Vite asset base (`base: ./`) so project-subpath deployments on GitHub Pages do not render blank pages
 - Build command:
 
 ```bash
