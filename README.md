@@ -65,19 +65,24 @@ Home 页必须回答：
 
 ---
 
-## 开发顺序
+## 当前前端结构（GitHub Pages 优先）
 
-1. 平台 Shell
-2. Home 页
-3. 导航结构
-4. 骨架页面
-5. 单页逐步精修
+```text
+/
+├─ index.html
+├─ style.css
+├─ app.js
+├─ assets/
+└─ docs/
+```
 
----
+说明：
 
-## 工作方式（必须遵守）
+- 纯静态前端，无构建运行时依赖。
+- 使用 hash 路由（`#/...`），避免 GitHub Pages 的服务端路由问题。
+- 直接部署仓库静态文件即可。
 
-- 必须先出 implementation plan
-- 不允许直接写代码
-- 不允许擅自扩展页面细节
-- 不允许跨模块改动
+路由入口示例：
+
+- `#/operations/home`
+- `#/workspace/home`
