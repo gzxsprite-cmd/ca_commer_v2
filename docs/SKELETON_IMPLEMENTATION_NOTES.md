@@ -1,39 +1,52 @@
 # Skeleton Implementation Notes
 
-## Scope implemented in this round
+## Root cause of GitHub Pages blank page
 
-- App shell（top bar + domain switcher + sidebar + content area）
-- URL-driven domain switcher（no extra domain app state）
-- Sidebar navigation for Operations / Workspace
-- Full required route structure
-- Two home pages with section-level entry links
-- Shared placeholder template for all non-home routes
+Previous implementation introduced a build/runtime assumption (Vite pipeline) that is not required for this skeleton round.
+For project-site deployment on GitHub Pages, any mismatch between built asset paths and actual hosted path can cause script/css loading failure and render a blank page.
 
-## GitHub Pages compatibility
+To maximize reliability, this round removes build-time dependency and uses direct static files.
 
-- Static frontend only
-- No backend runtime
-- Hash route pattern (`#/...`) to avoid server-side route handling
-- Relative Vite asset base (`base: ./`) so project-subpath deployments on GitHub Pages do not render blank pages
-- Build command:
+## Current implementation shape
 
-```bash
-npm run build
+```text
+/
+├─ index.html
+├─ style.css
+├─ app.js
+├─ assets/
+└─ docs/
 ```
 
-Output directory: `dist/`
+## Routing approach
 
-## Lightweight design decisions
+- Hash-based routing only (`#/...`)
+- Supported domains:
+  - `/operations/*`
+  - `/workspace/*`
+- Unknown hash fallback:
+  - `#/operations/home`
 
-- Vanilla Vite app (no heavy framework)
-- No Redux / no complex global state
-- Minimal sidebar behavior (no persisted collapse state)
-- Navigation rendered from one config file
+## Why this structure for GitHub Pages
 
-## Placeholder constraints followed
+- No backend runtime
+- No build pipeline requirement for deployment
+- No root-path asset rewrite risk from bundler output
+- Directly serves as a frontend-only SPA skeleton
 
+## Scope included
+
+- App shell (top bar + domain switcher + sidebar + content)
+- Domain switcher (URL-prefix driven)
+- Sidebar navigation
+- Operations Home
+- Workspace Home
+- Shared placeholder page template
+
+## Placeholder boundaries
+
+- No business-detail pages
 - No tables
-- No workflow logic
-- No API integration
-- No real business mock dataset
-- Structured English business identifiers are only allowed when absolutely needed
+- No API/backend
+- No workflow engine
+- No fake complex business data
